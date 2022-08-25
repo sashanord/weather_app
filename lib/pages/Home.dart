@@ -1,7 +1,6 @@
+// первая страница приложения со строкой поиска
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/events/WeatherEvent.dart';
-import '../bloc/WeatherBloc.dart';
 
 class Home extends StatefulWidget {
  
@@ -12,7 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final TextEditingController _textController = TextEditingController();
+  final TextEditingController _textController = TextEditingController(); // устанавливаем textController
+                                                                         // для дальнейшер передачи информации
 
   String get text => _textController.text;
 
@@ -39,7 +39,8 @@ class _HomeState extends State<Home> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              Navigator.pushNamed(context, '/weatherPage', arguments: text);
+              Navigator.pushNamed(context, '/weatherPage', arguments: text); // переход на экран с погодой
+                                                                             // с передачей аргумента
             },
           )
         ],

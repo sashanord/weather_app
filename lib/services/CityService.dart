@@ -1,5 +1,6 @@
-import 'dart:convert';
+//сервис, отвечающий за обработку запроса о городе
 
+import 'dart:convert';
 import '../models/City.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,13 +12,12 @@ class CityService {
         'http://api.openweathermap.org/geo/1.0/direct?q=$query&appid=$_apiKey';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
+      //если запрос был успешен, возвращаем новый экземпляр класса город
       Map<String, dynamic> json = jsonDecode(response.body)[0];
       return City.fromJson(json);
     } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
+      //если произошла ошибка, бросается исключение
+      //которе затем будет обработано в WeatherBloc
       throw Exception('Failed to load city');
     }
   }

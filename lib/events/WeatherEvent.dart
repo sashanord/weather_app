@@ -1,6 +1,5 @@
-import 'package:equatable/equatable.dart';
-
-abstract class WeatherEvent extends Equatable {
+//Единственное возможное событие - запрос поиска погоды с названием города
+abstract class WeatherEvent {
   const WeatherEvent();
 }
 
@@ -9,6 +8,4 @@ class WeatherRequested extends WeatherEvent {
 
   const WeatherRequested(this.city) : assert(city != null);
 
-  @override
-  List<Object> get props => [city];
 }
